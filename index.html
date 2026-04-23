@@ -49,6 +49,28 @@
         </div>
         
         <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="product-card bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden group">
+                <div class="relative overflow-hidden">
+                    <img src="p1.png" alt="طقم محولات لقم شنيور للفك والربط" class="w-full h-72 object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-indigo-600 shadow-sm">شحن مجاني 🎁</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2 h-14 overflow-hidden">طقم محولات لقم شنيور للفك والربط</h3>
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <span class="text-2xl font-black text-indigo-600">150</span>
+                            <span class="text-sm font-bold text-indigo-600 mr-1">ج.م</span>
+                        </div>
+                        <div class="text-slate-400 text-sm line-through">195 ج.م</div>
+                    </div>
+                    <button onclick="openModal('EG050401SHEN99')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-bold py-4 rounded-2xl transition duration-300 flex items-center justify-center gap-2">
+                        <span>اطلب الآن</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
             </div>
     </section>
 
@@ -100,10 +122,9 @@
     </div>
 
     <script>
-        // الـ API Key الخاص بك (تمت إضافته بنجاح)
         const TAAGER_API_KEY = "92aK_AClvpZM-yxuINLiABot91L1VlCjSj6UCuWHfh487IlYIQgGW2zYKn29x2P3YTlkR_z2mx0sgJX9lPT3EFrsAEsemvjNvP2G6IDo5WYIpk_A03XqVALE0aebGF_FCog9C4ZVyddCJpCSNLO3nchqu9Vma3OcAQhXba8Hx_OONkyk2ZFhmAZ17ThAtOvv4P1QsUzjrJAtdfXa8oU3hHUNtJ9XHgTlzNbAcxNtn_KWL2UsYTl2VbbLJ4JExEsCQ7HIRKtSEjAnek0InrS5otDXYWjm5pmOVus4rxisIS7cV_td-w_4A77HCuqUA5E8kGqqfjY3mnmPLDyEhTTCTfM3F2e5NuiOso9gOOiyxSUXID6gjRm4p20_BI37Hn84uOwuo8sjIq55Iq2SS0JwaG_ULNmKNq3dZG0H0TN2GcFYmfpITOK23bAzUVowVhZ6LdQDReSJnuPfoRoT47DVLbmAiA2D7ROXtP_RxtUrQhUqlW_LAHbMwUxDCbwc3gr5mx807hH2vNoxI-WxzpsI-pIMPCE-K73apPeqw0vnpvfZEHvFcdwP7t2ypyJMo9i2O7AjZ5RtIRuRezZToe87u8s5jz3DEOKgTY3EVKFl_5dlXQHXOwZBsZ5VFgIH__93H02RtCu4AdhnGocJYHP4YE9mJCzZgEepyKj70C1-8ev3rFhHmUjWgxQUuPpcIPqB1rXDecjYvHgxirKbb3jyeRCwn9MYONg_-2TRATLwB_bvG8HzSRBlgAFQr5Cg2VdZaopRODbL6ye3Lhi73VupsgibQwZoMNLdx6QGQico84TmmMD4c5Td582ukx3wjSKOnrxHS5Dyq0SiojVsucnbsOCB8BucmqdMGP6uYkEEazZxblTgeDeccsmX6KWgjHdFJdC7gekswFw4DaTWM0nTeAhrtfniupz_nzU7_zjJqGgnnFmhS7O8-gYDGaKtAhkmFnCGF72fXxqMZp3YKuCwdpsigrfC4uZETYUWVi8DctG-LykQmT-0MggYUox3x8lNAVNZv20O3QZNtIONAQH9SyoHejuKFsdE3qWe_U0h8RZwqanfAyhG25Y2ECEnVovjYiNUijserR8tWoP57Sz69lVl3MNVgs8X4AEeGtSTn_BD4PzfRDasbyK7B0HQPPAAhB4Du2UwKSpjJT_5Zt-8_74FBwpghT5G7XK0tCnxtq5H_lghoaApj57fcL2zBLSO5u4Ie-ANPH8vGMquySqPGS7ZQpSgbhv2a9A09NTgqvwXYCiMtE0RSZD9KMEt_pI_SZB7TrJiPU92-BVp_4BBJRFZx8sLsY99Um4yBNNlJ6SeTg5LQQrpCgEZOrDO045GItsub4vN9FMFEaJeBem3Q4mn7_nf8GYn8QnuHnfDwlHqvPXhUyisTSa1LsiaqyqRyo6DKvPZmgm5Q3l7nIDzut3HiI8lAz8VYa7MANdfoSSCFnNAH1iMVRapAflSZFhe7z6C2oBBN35-S21mnApNFBHw9ay1O5EQRpIAHRgtBqKbfqgCiSOev_Nq5etg5Rc_vyamLV68qfPZT98E-VOrgwrStn6-oJG2CeVALhl06uMZ4w_8nnMcgpOZnDT2JG5GunNhRRoLfTYLI6ecN2XRXkFgs_sgs_RSqZD2PMhu5EQSlZ5doPSADwhSUhQeCzbPYhUtWZT-B_BY0Zx4pN1KeC1yBlo1z2qsRr3aQz6bt_Qq6AdgddhhJZ7FgoyYWLZFHdEjh4lFThZw3gVeFzXFIJdOd9tHrG_QsOA6nYfWk1d4AdkzzGDBhg5sj0JZqqoIZ4xUtPrA7g5HEKZKxQUuuvEAmAwAMwMW70jkgnAX3BTiMcZ3kEEI4zIzGIncrM736XP3iDi6rhPFN96n6Jwq6cj8_Znu4AGYhHeA1qvZwhWiORBISH7CLLiixLkf5u7o6gcNURwQndkyZRCdfQYcWGOpMwaMCLp5d5qvlJhLPJCQW6Me9dVKsXfzY6EUQSeHsUFtYnC9DOAqhYn7rw5wnMPFi0DARHgXE5wZzh1JNb2YYIscdnn5";
 
-        // وظيفة تحميل المنتجات أوتوماتيكياً
+        // إذا كان لديك ملف products.json سيتم جلب باقي المنتجات إضافتها بجانب المنتج الذي تم إضافته يدوياً
         async function fetchProducts() {
             try {
                 const response = await fetch('products.json');
@@ -137,7 +158,7 @@
                     `;
                 });
             } catch (err) {
-                console.error("خطأ في تحميل بيانات المنتجات");
+                console.log("لم يتم العثور على ملف products.json أو به خطأ، سيتم عرض المنتجات الثابتة فقط.");
             }
         }
 
@@ -152,7 +173,6 @@
             document.body.style.overflow = 'auto';
         }
 
-        // إرسال الطلب إلى API تاجر
         document.getElementById('taagerForm').onsubmit = async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
@@ -171,7 +191,6 @@
             };
 
             try {
-                // ملاحظة: رابط الـ API قد يتغير من قبل تاجر، يرجى التأكد من لوحة التحكم
                 const res = await fetch('https://api.taager.com/api/v1/orders/create', {
                     method: 'POST',
                     headers: {
