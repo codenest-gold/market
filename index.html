@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر النخبة | تسوق بأمان</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
+        .product-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .product-card:hover { transform: translateY(-10px); shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .loader { border-top-color: #4f46e5; animation: spinner 1.5s linear infinite; }
+        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="sticky top-0 z-50 glass border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-black">S</div>
+                    <span class="text-2xl font-extrabold tracking-tight text-slate-800">SMART <span class="text-indigo-600">SHOP</span></span>
+                </div>
+                <div class="hidden md:flex items-center gap-6 text-sm font-bold text-slate-600">
+                    <span>🚚 شحن سريع</span>
+                    <span>⭐ جودة مضمونة</span>
+                    <span>💰 دفع عند الاستلام</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative overflow-hidden bg-slate-900 py-24">
+        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="relative max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">تسوق أحدث <span class="text-indigo-400">التريندات</span></h1>
+            <p class="text-slate-300 text-xl max-w-2xl mx-auto mb-10">نقدم لك أفضل المنتجات المختارة بعناية من منصة تاجر مع ضمان الاستبدال والاسترجاع.</p>
+            <a href="#products-section" class="bg-indigo-600 hover:bg-indigo-700 text-white px-10 py-4 rounded-full font-bold text-lg transition shadow-xl shadow-indigo-500/20">تصفح المنتجات الآن</a>
+        </div>
+    </header>
+
+    <section id="products-section" class="max-w-7xl mx-auto px-4 py-20">
+        <div class="flex items-center justify-between mb-12">
+            <h2 class="text-3xl font-extrabold text-slate-800 border-r-4 border-indigo-600 pr-4">منتجاتنا المختارة</h2>
+            <div class="h-px flex-1 bg-slate-200 mr-8"></div>
+        </div>
+        
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            </div>
+    </section>
+
+    <div id="orderModal" class="fixed inset-0 z-[100] hidden overflow-y-auto px-4 flex items-center justify-center">
+        <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+        
+        <div class="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden transform transition-all">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-slate-800">تأكيد طلبك</h2>
+                    <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 text-2xl">&times;</button>
+                </div>
+
+                <form id="taagerForm" class="space-y-5">
+                    <input type="hidden" id="prod_id">
+                    
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-1">الاسم بالكامل</label>
+                        <input type="text" id="cust_name" placeholder="اكتب اسمك الثلاثي" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-1">رقم الهاتف</label>
+                        <input type="tel" id="cust_phone" placeholder="01xxxxxxxxx" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition text-left">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">المحافظة</label>
+                            <input type="text" id="cust_province" placeholder="مثال: القاهرة" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">المدينة</label>
+                            <input type="text" id="cust_city" placeholder="مثال: مدينة نصر" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-1">العنوان بالتفصيل</label>
+                        <textarea id="cust_address" placeholder="رقم الشارع / رقم العمارة / الدور" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition" rows="2"></textarea>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-black py-4 rounded-xl shadow-lg shadow-indigo-200 transition-all transform active:scale-95">
+                        إتمام الطلب الآن (دفع عند الاستلام)
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // الـ API Key الخاص بك (تمت إضافته بنجاح)
+        const TAAGER_API_KEY = "92aK_AClvpZM-yxuINLiABot91L1VlCjSj6UCuWHfh487IlYIQgGW2zYKn29x2P3YTlkR_z2mx0sgJX9lPT3EFrsAEsemvjNvP2G6IDo5WYIpk_A03XqVALE0aebGF_FCog9C4ZVyddCJpCSNLO3nchqu9Vma3OcAQhXba8Hx_OONkyk2ZFhmAZ17ThAtOvv4P1QsUzjrJAtdfXa8oU3hHUNtJ9XHgTlzNbAcxNtn_KWL2UsYTl2VbbLJ4JExEsCQ7HIRKtSEjAnek0InrS5otDXYWjm5pmOVus4rxisIS7cV_td-w_4A77HCuqUA5E8kGqqfjY3mnmPLDyEhTTCTfM3F2e5NuiOso9gOOiyxSUXID6gjRm4p20_BI37Hn84uOwuo8sjIq55Iq2SS0JwaG_ULNmKNq3dZG0H0TN2GcFYmfpITOK23bAzUVowVhZ6LdQDReSJnuPfoRoT47DVLbmAiA2D7ROXtP_RxtUrQhUqlW_LAHbMwUxDCbwc3gr5mx807hH2vNoxI-WxzpsI-pIMPCE-K73apPeqw0vnpvfZEHvFcdwP7t2ypyJMo9i2O7AjZ5RtIRuRezZToe87u8s5jz3DEOKgTY3EVKFl_5dlXQHXOwZBsZ5VFgIH__93H02RtCu4AdhnGocJYHP4YE9mJCzZgEepyKj70C1-8ev3rFhHmUjWgxQUuPpcIPqB1rXDecjYvHgxirKbb3jyeRCwn9MYONg_-2TRATLwB_bvG8HzSRBlgAFQr5Cg2VdZaopRODbL6ye3Lhi73VupsgibQwZoMNLdx6QGQico84TmmMD4c5Td582ukx3wjSKOnrxHS5Dyq0SiojVsucnbsOCB8BucmqdMGP6uYkEEazZxblTgeDeccsmX6KWgjHdFJdC7gekswFw4DaTWM0nTeAhrtfniupz_nzU7_zjJqGgnnFmhS7O8-gYDGaKtAhkmFnCGF72fXxqMZp3YKuCwdpsigrfC4uZETYUWVi8DctG-LykQmT-0MggYUox3x8lNAVNZv20O3QZNtIONAQH9SyoHejuKFsdE3qWe_U0h8RZwqanfAyhG25Y2ECEnVovjYiNUijserR8tWoP57Sz69lVl3MNVgs8X4AEeGtSTn_BD4PzfRDasbyK7B0HQPPAAhB4Du2UwKSpjJT_5Zt-8_74FBwpghT5G7XK0tCnxtq5H_lghoaApj57fcL2zBLSO5u4Ie-ANPH8vGMquySqPGS7ZQpSgbhv2a9A09NTgqvwXYCiMtE0RSZD9KMEt_pI_SZB7TrJiPU92-BVp_4BBJRFZx8sLsY99Um4yBNNlJ6SeTg5LQQrpCgEZOrDO045GItsub4vN9FMFEaJeBem3Q4mn7_nf8GYn8QnuHnfDwlHqvPXhUyisTSa1LsiaqyqRyo6DKvPZmgm5Q3l7nIDzut3HiI8lAz8VYa7MANdfoSSCFnNAH1iMVRapAflSZFhe7z6C2oBBN35-S21mnApNFBHw9ay1O5EQRpIAHRgtBqKbfqgCiSOev_Nq5etg5Rc_vyamLV68qfPZT98E-VOrgwrStn6-oJG2CeVALhl06uMZ4w_8nnMcgpOZnDT2JG5GunNhRRoLfTYLI6ecN2XRXkFgs_sgs_RSqZD2PMhu5EQSlZ5doPSADwhSUhQeCzbPYhUtWZT-B_BY0Zx4pN1KeC1yBlo1z2qsRr3aQz6bt_Qq6AdgddhhJZ7FgoyYWLZFHdEjh4lFThZw3gVeFzXFIJdOd9tHrG_QsOA6nYfWk1d4AdkzzGDBhg5sj0JZqqoIZ4xUtPrA7g5HEKZKxQUuuvEAmAwAMwMW70jkgnAX3BTiMcZ3kEEI4zIzGIncrM736XP3iDi6rhPFN96n6Jwq6cj8_Znu4AGYhHeA1qvZwhWiORBISH7CLLiixLkf5u7o6gcNURwQndkyZRCdfQYcWGOpMwaMCLp5d5qvlJhLPJCQW6Me9dVKsXfzY6EUQSeHsUFtYnC9DOAqhYn7rw5wnMPFi0DARHgXE5wZzh1JNb2YYIscdnn5";
+
+        // وظيفة تحميل المنتجات أوتوماتيكياً
+        async function fetchProducts() {
+            try {
+                const response = await fetch('products.json');
+                const products = await response.json();
+                const grid = document.getElementById('products-grid');
+                
+                products.forEach(p => {
+                    grid.innerHTML += `
+                        <div class="product-card bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden group">
+                            <div class="relative overflow-hidden">
+                                <img src="${p.image}" alt="${p.name}" class="w-full h-72 object-cover group-hover:scale-110 transition duration-500">
+                                <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-indigo-600 shadow-sm">شحن مجاني 🎁</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-slate-800 mb-2 h-14 overflow-hidden">${p.name}</h3>
+                                <div class="flex items-center justify-between mb-6">
+                                    <div>
+                                        <span class="text-2xl font-black text-indigo-600">${p.price}</span>
+                                        <span class="text-sm font-bold text-indigo-600 mr-1">ج.م</span>
+                                    </div>
+                                    <div class="text-slate-400 text-sm line-through">${Math.round(p.price * 1.3)} ج.م</div>
+                                </div>
+                                <button onclick="openModal('${p.id}')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-bold py-4 rounded-2xl transition duration-300 flex items-center justify-center gap-2">
+                                    <span>اطلب الآن</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+            } catch (err) {
+                console.error("خطأ في تحميل بيانات المنتجات");
+            }
+        }
+
+        function openModal(id) {
+            document.getElementById('prod_id').value = id;
+            document.getElementById('orderModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('orderModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // إرسال الطلب إلى API تاجر
+        document.getElementById('taagerForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = `<span class="inline-block w-5 h-5 border-2 loader rounded-full mr-2"></span> جاري التأكيد...`;
+            btn.disabled = true;
+
+            const orderPayload = {
+                product_id: document.getElementById('prod_id').value,
+                customer_name: document.getElementById('cust_name').value,
+                customer_phone: document.getElementById('cust_phone').value,
+                province: document.getElementById('cust_province').value,
+                city: document.getElementById('cust_city').value,
+                address: document.getElementById('cust_address').value
+            };
+
+            try {
+                // ملاحظة: رابط الـ API قد يتغير من قبل تاجر، يرجى التأكد من لوحة التحكم
+                const res = await fetch('https://api.taager.com/api/v1/orders/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${TAAGER_API_KEY}`
+                    },
+                    body: JSON.stringify(orderPayload)
+                });
+
+                if (res.ok) {
+                    alert("🎉 مبروك! تم تسجيل طلبك بنجاح. سيتواصل معك فريق خدمة العملاء قريباً.");
+                    closeModal();
+                    e.target.reset();
+                } else {
+                    const errData = await res.json();
+                    alert("❌ فشل الطلب: " + (errData.message || "تأكد من البيانات وحاول مجدداً"));
+                }
+            } catch (err) {
+                alert("❌ حدث خطأ في الاتصال بالسيرفر. يرجى المحاولة لاحقاً.");
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        };
+
+        window.onload = fetchProducts;
+    </script>
+</body>
+</html>
